@@ -18,17 +18,17 @@ app.use(express.json());
 app.use("/user", userRouter);
 
 // deploy on heroku
-// if (process.env.NODE_ENV == "production") {
-app.use(express.static("build"));
+if (process.env.NODE_ENV == "production") {
+	app.use(express.static("build"));
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname + "/build/index.html"));
-});
-// } else {
-// 	app.get("/", (req, res) => {
-// 		res.send("client disconnected");
-// 	});
-// }
+	app.get("*", (req, res) => {
+		res.sendFile(path.join(__dirname + "./build/index.html"));
+	});
+} else {
+	app.get("/", (req, res) => {
+		res.send("client disconnected");
+	});
+}
 // submit on remote server end
 
 // listening port
