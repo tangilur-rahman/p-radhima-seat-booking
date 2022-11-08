@@ -1,5 +1,6 @@
 // external modules
 const express = require("express");
+const path = require("path");
 require("dotenv").config();
 
 // internal modules
@@ -32,7 +33,7 @@ if (process.env.NODE_ENV == "production") {
 // submit on remote server end
 
 // listening port
-const port = process.env.PORT || 4983;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
 	console.log(`Server is running at http://localhost:${port}`);
